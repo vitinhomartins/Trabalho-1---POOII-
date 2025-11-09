@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21.0.6" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.quiz.quiz.Controller.MenuController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="106.0" layoutY="49.0" prefHeight="302.0" prefWidth="389.0">
+            <children>
+                <Label text="Genio Quiz 2.0">
+                    <font>
+                        <Font size="49.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnComecarJogo" mnemonicParsing="false" onAction="#iniciarQuiz" text="Comecar Jogo">
+                    <VBox.margin>
+                        <Insets bottom="20.0" top="30.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnRanking" mnemonicParsing="false" onAction="#abrirRanking" text="Ver Ranking">
+                    <VBox.margin>
+                        <Insets bottom="20.0" />
+                    </VBox.margin>
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnCreditos" mnemonicParsing="false" onAction="#abrirCreditos" text="Creditos">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

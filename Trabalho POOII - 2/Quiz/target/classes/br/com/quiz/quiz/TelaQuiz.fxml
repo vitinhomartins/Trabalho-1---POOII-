@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.quiz.quiz.Controller.QuizController"> <children>
+    <VBox alignment="TOP_CENTER" layoutX="50.0" layoutY="30.0" prefHeight="480.0" prefWidth="700.0" spacing="15.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
+
+        <Label fx:id="lblTemporizador" style="-fx-font-size: 18pt;" text="Tempo: 999s" VBox.vgrow="NEVER" />
+
+        <Label fx:id="lblNumeroPergunta" style="-fx-font-size: 14pt; -fx-font-weight: bold;" text="PERGUNTA 1 / 10" VBox.vgrow="NEVER" />
+
+        <TextArea fx:id="txtPergunta" editable="false" prefHeight="92.0" prefWidth="700.0" text="O que significa a sigla POO em Programação?" wrapText="true">
+            <font>
+                <Font size="16.0" />
+            </font>
+            <VBox.margin>
+               <Insets bottom="30.0" />
+            </VBox.margin>
+        </TextArea>
+
+        <Label style="-fx-font-weight: bold;" text="Escolha a alternativa correta:">
+            <VBox.margin>
+                <Insets top="10.0" />
+            </VBox.margin>
+        </Label>
+
+        <Button fx:id="btnAlternativaA" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleResponder" style="-fx-alignment: center-left;" text="A) Programação Orientada a Objetos" />
+
+        <Button fx:id="btnAlternativaB" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleResponder" style="-fx-alignment: center-left;" text="B) Processo Organizacional Online" />
+
+        <Button fx:id="btnAlternativaC" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleResponder" style="-fx-alignment: center-left;" text="C) Protocolo de Ordem de Opções" />
+
+        <Button fx:id="btnAlternativaD" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleResponder" style="-fx-alignment: center-left;" text="D) Padrões Operacionais Obscuros" />
+
+        <Label fx:id="lblFeedbackQuiz" style="-fx-font-size: 14pt; -fx-text-fill: red;" text="" VBox.vgrow="NEVER">
+            <VBox.margin>
+                <Insets top="20.0" />
+            </VBox.margin>
+        </Label>
+
+    </VBox>
+</children>
+</AnchorPane>

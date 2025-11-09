@@ -1,0 +1,60 @@
+-- **************************************************************************************************
+-- CRIAÇÃO DAS TABELAS DO SISTEMA DE PERGUNTAS E RESPOSTAS
+-- **************************************************************************************************
+
+-- --------------------------------------------------------------------------------
+-- TABELA: USUARIO
+-- Armazena informações de login, pontuação e último acesso.
+-- --------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS Usuario (
+    id_usuario     SERIAL PRIMARY KEY,
+    username       VARCHAR(50)  UNIQUE NOT NULL,
+    senha          VARCHAR(255) NOT NULL,              -- Em produção, use hash seguro (ex.: BCrypt)
+    ultimo_login   TIMESTAMP     DEFAULT CURRENT_TIMESTAMP,
+    score          DECIMAL(5,2)  DEFAULT 0.0           -- Pontuação acumulada ou tempo médio
+);
+
+-- --------------------------------------------------------------------------------
+-- TABELA: PERGUNTA
+-- Contém o texto da pergunta, alternativas e a resposta correta.
+-- --------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS Pergunta (
+    id_pergunta      SERIAL PRIMARY KEY,
+    texto_pergunta   VARCHAR(500) NOT NULL,            -- Texto completo da pergunta
+    numero_questao   INT NOT NULL UNIQUE,              -- Número da questão (único e sequencial)
+    opcao_a          VARCHAR(200) NOT NULL,
+    opcao_b          VARCHAR(200) NOT NULL,
+    opcao_c          VARCHAR(200) NOT NULL,
+    opcao_d          VARCHAR(200) NOT NULL,
+    resposta_correta CHAR(1) NOT NULL CHECK (
+                        resposta_correta IN ('A', 'B', 'C', 'D')
+                     )                                 -- Garante que só aceita A, B, C ou D
+);
+
+-- --------------------------------------------------------------------------------
+-- TABELA: RESPOSTA_USUARIO
+-- Registra a resposta escolhida por cada usuário em cada pergunta.
+-- --------------------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS RespostaUsuario (
+    id_resposta        SERIAL PRIMARY KEY,
+    id_usuario         INT NOT NULL,
+    id_pergunta        INT NOT NULL,
+    resposta_escolhida CHAR(1) NOT NULL CHECK (
+                           resposta_escolhida IN ('A', 'B', 'C', 'D')
+                        ),
+    correta            BOOLEAN NOT NULL,
+    data_resposta      TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    -- Relacionamentos
+    FOREIGN KEY (id_usuario)
+        REFERENCES Usuario (id_usuario)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (id_pergunta)
+        REFERENCES Pergunta (id_pergunta)
+        ON DELETE CASCADE
+);
+
+-- **************************************************************************************************
+-- FIM DO SCRIPT DE CRIAÇÃO DAS TABELAS
+-- **************************************************************************************************
